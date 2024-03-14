@@ -4,20 +4,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>All User</title>
     <style>
+      h1{
+        text-align: center;
+        color: brown;
+      }
       table,
       th,
       td {
-        border: 1px solid rgb(102, 89, 89);
+        border: 1px dotted rgb(27, 27, 29);
       }
     </style>
   </head>
 
   <body>
+    <h1>User-Data</h1>
     <table>
       <tr>
-        <th>id</th>
-        <th>Email</th>
-        <th>username</th>
+        <th style="background-color: orchid;">id</th>
+        <th style="background-color: burlywood;">Email</th>
+        <th style="background-color: lightcoral;">username</th>
       </tr>
       <% for(user of users){ %>
       <tr>
@@ -25,12 +30,18 @@
         <td><%= user.email %></td>
         <td><%= user.username %></td>
         <td>
-          <form action="/user/<%= user.id %>/edit" method="get">
-            <button>Edit username</button>
+          <form style="display: flex; " action="/user/<%= user.id %>/edit" method="get">
+            <button style="background-color: green;color: white; border: none; border-radius: 9px;">Edit username</button>
+          </form>
+        </td>
+        <td>
+          <form method="get" action="/user/<%=user.id%>/delete">
+            <button>Delete</button>
           </form>
         </td>
       </tr>
       <% } %>
     </table>
+    <a href="http://localhost:8080/user/addnew">Add new user</a>
   </body>
 </html>
